@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block pg_title %}Django Todo - {% if todo.pk %}Atualizar Tarefa{% else %}Nova Tarefa{% endif %}{% endblock pg_title %}
+
+{% block content %}
+{% if todo.pk %}
+  <h1>Atualizar Tarefa</h1>
+{% else %}
+  <h1>Nova Tarefa</h1>
+{% endif %}
+<form method="POST">
+    {% csrf_token %}
+    {{ form |crispy}}
+    <button type="submit" class="btn btn-primary">{% if todo.pk %}Atualizar{% else %}Cadastrar{% endif %}</button>
+</form>
+{% endblock content %}

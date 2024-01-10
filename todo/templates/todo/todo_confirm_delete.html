@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block pg_title %}Django Todo - Excluir Tarefas{% endblock pg_title %}
+
+{% block content %}
+    <h1>Excluir Tarefas</h1>
+
+    <p>Tem certeza que deseja excluir a tarefa <strong>{{ todo.title }}</strong>?</p>
+    <form  method="post">
+        {% csrf_token %}
+        <button class="btn btn-danger">Confirmar</button>
+        <a href="{% url 'todo_list' %}" class="btn btn-primary">Cancelar</a>
+    </form>
+{% endblock content %}
